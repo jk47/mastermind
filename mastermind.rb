@@ -11,7 +11,8 @@ class Mastermind
 
   def get_user_guess(guess_number)
     puts "Please enter your guess."
-    guess = gets.chomp
+    guess = gets.chomp.split
+
   end
 
 
