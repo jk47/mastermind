@@ -12,9 +12,11 @@ class Mastermind
   def get_user_guess(guess_number)
     puts "Please enter your guess."
     guess = gets.chomp.split
-
+    
   end
 
+  def is_correct_guess?
+  end
 
 
   game = Mastermind.new
