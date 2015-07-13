@@ -11,18 +11,30 @@ class Mastermind
 
   def get_user_guess(guess_number)
     puts "Please enter your guess."
-    guess = gets.chomp.split
-    
+    gets.chomp.split
+  end
+
+  def check_guess(guess)
+      guess.each_with_index {|g, index|
+        if g == @secret.row[index]
+          @guesses.feedback[index] = "R"
+        end
+      }
+  end
+
+  def check_peg
+
   end
 
   def is_correct_guess?
+
   end
 
 
   game = Mastermind.new
   (0..12).each { |i|
-    game.get_user_guess(i)
+    game.check_guess(game.get_user_guess(i))
+
   }
-  puts game.guesses
-  puts "#{game.secret} = secret"
+
 end
