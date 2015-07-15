@@ -8,6 +8,10 @@ class Mastermind
   def initialize
     @guesses = Array.new(12){PegRow.new}
     @secret = PegRow.new
+    @secret.row[0] = "G"
+    @secret.row[1] = "B"
+    @secret.row[2] = "G"
+    @secret.row[3] = "B"
   end
 
   def get_user_guess(guess_number)
@@ -15,14 +19,15 @@ class Mastermind
     gets.chomp.split
   end
 
-  def check_guess(guess)
+  def check_guess(guess, row_num)
+      puts guess
       guess.each_with_index {|g, index|
+        puts index
         if g == @secret.row[index]
-          @guesses.feedback << "COLOR"
+          @guesses[row_num].feedback << "COLOR"
         elsif @secret.row.include?(g)
-          @guesses.feedback << "WHITE"
+          @guesses[row_num].feedback << "WHITE"
         end
-
       }
   end
 
@@ -41,7 +46,7 @@ class Mastermind
 
   game = Mastermind.new
   (0..12).each { |i|
-    game.check_guess(game.get_user_guess(i))
+    game.check_guess(game.get_user_guess(i), i)
     game.print_board
   }
 
