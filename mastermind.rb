@@ -16,13 +16,11 @@ class Mastermind
 
   def get_user_guess(guess_number)
     puts "Please enter your guess."
-    gets.chomp.split
+    @guesses[guess_number].row = gets.chomp.split
   end
 
   def check_guess(guess, row_num)
-      puts guess
       guess.each_with_index {|g, index|
-        puts index
         if g == @secret.row[index]
           @guesses[row_num].feedback << "COLOR"
         elsif @secret.row.include?(g)
@@ -32,7 +30,15 @@ class Mastermind
   end
 
   def print_board
-    puts @guesses[0].feedback
+    puts
+    puts "BOARD: "
+    puts
+    (0...12).each { |i|
+      print "#{@guesses[i].row.join(" ")} :: #{@guesses[i].feedback.join(" ")}"
+      puts
+    }
+    puts "--------------------------------"
+    puts
   end
 
   def check_peg
