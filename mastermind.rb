@@ -28,6 +28,12 @@ class Mastermind
           @guesses[row_num].feedback << "WHITE"
         end
       }
+        # If all of the feedback are 'color' the game is over
+        return true if @guesses[row_num].feedback.uniq.length == 1
+        else return false
+
+
+
   end
 
   def print_board
@@ -42,9 +48,19 @@ class Mastermind
     puts
   end
 
+  def end_game
+    print_board
+    puts "GAME OVER THANKS"
+  end
+
+
+
   game = Mastermind.new
   (0..12).each { |i|
-    game.check_guess(game.get_user_guess(i), i)
+    if game.check_guess(game.get_user_guess(i), i)
+      game.end_game
+      break
+    end
     game.print_board
   }
 
