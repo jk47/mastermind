@@ -3,6 +3,7 @@ class PegRow
 
   def initialize
     @row = []
+    @feedback_used = []
     @feedback = []
   end
 

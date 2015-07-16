@@ -42,15 +42,6 @@ class Mastermind
     puts
   end
 
-  def check_peg
-
-  end
-
-  def is_correct_guess?
-
-  end
-
-
   game = Mastermind.new
   (0..12).each { |i|
     game.check_guess(game.get_user_guess(i), i)
