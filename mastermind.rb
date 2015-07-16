@@ -15,6 +15,7 @@ class Mastermind
   end
 
   def get_user_guess(guess_number)
+    puts "COLOR CHOICES: #{COLORS.join(' ')}"
     puts "Please enter your guess."
     @guesses[guess_number].row = gets.chomp.split
   end
