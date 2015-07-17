@@ -7,17 +7,21 @@ class Mastermind
 
   def initialize
     @guesses = Array.new(12){PegRow.new}
-    @secret = PegRow.new
-    @secret.row[0] = "G"
-    @secret.row[1] = "B"
-    @secret.row[2] = "G"
-    @secret.row[3] = "B"
+    @secret = get_random_row
   end
 
   def get_user_guess(guess_number)
     puts "COLOR CHOICES: #{COLORS.join(' ')}"
     puts "Please enter your guess."
     @guesses[guess_number].row = gets.chomp.split
+  end
+
+  def get_random_row
+    arr = []
+    4.times {|x|
+      arr<<COLORS[rand 6]
+    }
+    arr
   end
 
   def check_guess(guess, row_num)
