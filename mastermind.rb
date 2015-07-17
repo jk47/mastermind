@@ -48,18 +48,20 @@ class Mastermind
     puts
   end
 
-  def end_game
+  def end_game(who_won)
     print_board
-    puts "GAME OVER THANKS"
+    puts "GAME OVER, #{who_won.upcase} WINS!!"
   end
 
 
 
   game = Mastermind.new
-  (0..12).each { |i|
+  (0...12).each { |i|
     if game.check_guess(game.get_user_guess(i), i)
-      game.end_game
+      game.end_game("codebreaker")
       break
+    elsif i == 11
+      game.end_game("codesetter")
     end
     game.print_board
   }
