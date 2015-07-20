@@ -35,9 +35,6 @@ class Mastermind
         # If all of the feedback are 'color' the game is over
         return true if @guesses[row_num].feedback.uniq.length == 1
         else return false
-
-
-
   end
 
   def print_board
