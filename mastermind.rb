@@ -68,6 +68,7 @@ class Mastermind
       game.end_game("codesetter")
     end
     game.print_board
+    
   }
 
 end
